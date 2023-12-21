@@ -1,0 +1,976 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.11.1\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props" Condition="Exists('..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.11.1\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4B40DB44-A009-4E1D-98D6-77DCDD8E89B1}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EShop</RootNamespace>
+    <AssemblyName>EShop</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44396</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>4.1</TypeScriptToolsVersion>
+    <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
+    <DockerLaunchUrl>http://{ServiceIPAddress}</DockerLaunchUrl>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <IncludeIisSettings>true</IncludeIisSettings>
+    <LegacyPublishPropertiesPageEnabled>true</LegacyPublishPropertiesPageEnabled>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="Context1 Dağıtımı" Order="1">
+          <Destination Path="" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=AYSEGUL\SQLEXPRESS01%3bInitial Catalog=EShop%3bIntegrated Security=True" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\Context1 Dağıtımı_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Image\airpods.jpg" />
+    <Content Include="Content\Image\anasayfa.jpg" />
+    <Content Include="Content\Image\anasayfa2.jpg" />
+    <Content Include="Content\Image\anasayfa3.jpg" />
+    <Content Include="Content\Image\iphone13.jpg" />
+    <Content Include="Content\Image\iphone14.jpg" />
+    <Content Include="Content\Image\iphone15.jpg" />
+    <Content Include="Content\Image\pc1.jpg" />
+    <Content Include="Content\Image\pc2.jpg" />
+    <Content Include="Content\Image\sepet.png" />
+    <Content Include="Content\Image\T.jpg" />
+    <Content Include="Content\Image\tablet1.jpg" />
+    <Content Include="Content\Image\watch.jpg" />
+    <Content Include="Content\Image\şarj.jpg" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Nice Admin\404.html" />
+    <Content Include="Nice Admin\assets\chart-master\.gitignore" />
+    <Content Include="Nice Admin\assets\chart-master\Chart.js" />
+    <Content Include="Nice Admin\assets\chart-master\Chart.min.js" />
+    <Content Include="Nice Admin\assets\chart-master\docs\Chart.js" />
+    <Content Include="Nice Admin\assets\chart-master\docs\index.html" />
+    <Content Include="Nice Admin\assets\chart-master\docs\prettify.css" />
+    <Content Include="Nice Admin\assets\chart-master\docs\prettify.js" />
+    <Content Include="Nice Admin\assets\chart-master\docs\styles.css" />
+    <Content Include="Nice Admin\assets\chart-master\samples\bar.html" />
+    <Content Include="Nice Admin\assets\chart-master\samples\doughnut.html" />
+    <Content Include="Nice Admin\assets\chart-master\samples\line.html" />
+    <Content Include="Nice Admin\assets\chart-master\samples\pie.html" />
+    <Content Include="Nice Admin\assets\chart-master\samples\polarArea.html" />
+    <Content Include="Nice Admin\assets\chart-master\samples\radar.html" />
+    <Content Include="Nice Admin\assets\chart-master\samples\sixup.html" />
+    <Content Include="Nice Admin\assets\chart-master\site\assets\6charts.png" />
+    <Content Include="Nice Admin\assets\chart-master\site\assets\Chart.js" />
+    <Content Include="Nice Admin\assets\chart-master\site\assets\effects.js" />
+    <Content Include="Nice Admin\assets\chart-master\site\assets\excanvas.js" />
+    <Content Include="Nice Admin\assets\chart-master\site\assets\html.png" />
+    <Content Include="Nice Admin\assets\chart-master\site\assets\simple.png" />
+    <Content Include="Nice Admin\assets\chart-master\site\index.html" />
+    <Content Include="Nice Admin\assets\chart-master\site\styles.css" />
+    <Content Include="Nice Admin\assets\ckeditor\build-config.js" />
+    <Content Include="Nice Admin\assets\ckeditor\ckeditor.js" />
+    <Content Include="Nice Admin\assets\ckeditor\config.js" />
+    <Content Include="Nice Admin\assets\ckeditor\contents.css" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\af.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\ar.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\bg.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\bn.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\bs.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\ca.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\cs.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\cy.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\da.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\de.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\el.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\en-au.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\en-ca.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\en-gb.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\en.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\eo.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\es.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\et.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\eu.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\fa.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\fi.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\fo.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\fr-ca.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\fr.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\gl.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\gu.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\he.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\hi.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\hr.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\hu.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\is.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\it.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\ja.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\ka.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\km.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\ko.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\ku.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\lt.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\lv.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\mk.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\mn.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\ms.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\nb.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\nl.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\no.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\pl.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\pt-br.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\pt.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\ro.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\ru.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\sk.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\sl.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\sr-latn.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\sr.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\sv.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\th.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\tr.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\ug.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\uk.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\vi.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\zh-cn.js" />
+    <Content Include="Nice Admin\assets\ckeditor\lang\zh.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ar.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\bg.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ca.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\cs.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\cy.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\da.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\de.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\el.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\en.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\eo.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\es.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\et.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\fa.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\fi.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\fr.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\gu.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\he.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\hi.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\hr.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\hu.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\it.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ja.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ku.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\lt.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\lv.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\mk.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\mn.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\nb.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\nl.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\no.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\pl.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\pt-br.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\pt.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ro.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ru.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\sk.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\sl.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\sv.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\tr.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ug.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\uk.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\vi.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\zh-cn.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\a11yhelp\dialogs\lang\_translationstatus.txt" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\about\dialogs\about.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\about\dialogs\logo_ckeditor.png" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\dialog\dialogDefinition.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\fakeobjects\images\spacer.gif" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\icons.png" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\image\dialogs\image.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\image\images\noimage.png" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\link\dialogs\anchor.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\link\dialogs\link.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\link\images\anchor.png" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\magicline\images\icon.png" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\pastefromword\filter\default.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\scayt\dialogs\options.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\scayt\dialogs\toolbar.css" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\specialchar\dialogs\lang\ca.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\specialchar\dialogs\lang\cs.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\specialchar\dialogs\lang\cy.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\specialchar\dialogs\lang\de.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\specialchar\dialogs\lang\el.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\specialchar\dialogs\lang\en.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\specialchar\dialogs\lang\eo.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\specialchar\dialogs\lang\et.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\specialchar\dialogs\lang\fa.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\specialchar\dialogs\lang\fi.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\specialchar\dialogs\lang\fr.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\specialchar\dialogs\lang\he.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\specialchar\dialogs\lang\hr.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\specialchar\dialogs\lang\it.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\specialchar\dialogs\lang\ku.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\specialchar\dialogs\lang\lv.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\specialchar\dialogs\lang\nb.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\specialchar\dialogs\lang\nl.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\specialchar\dialogs\lang\no.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\specialchar\dialogs\lang\pt-br.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\specialchar\dialogs\lang\sk.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\specialchar\dialogs\lang\sv.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\specialchar\dialogs\lang\tr.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\specialchar\dialogs\lang\ug.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\specialchar\dialogs\lang\zh-cn.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\specialchar\dialogs\lang\_translationstatus.txt" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\tabletools\dialogs\tableCell.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\table\dialogs\table.js" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\wsc\dialogs\ciframe.html" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\wsc\dialogs\tmpFrameset.html" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\wsc\dialogs\wsc.css" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\wsc\dialogs\wsc.js" />
+    <Content Include="Nice Admin\assets\ckeditor\samples\ajax.html" />
+    <Content Include="Nice Admin\assets\ckeditor\samples\api.html" />
+    <Content Include="Nice Admin\assets\ckeditor\samples\appendto.html" />
+    <Content Include="Nice Admin\assets\ckeditor\samples\assets\inlineall\logo.png" />
+    <Content Include="Nice Admin\assets\ckeditor\samples\assets\outputxhtml\outputxhtml.css" />
+    <Content Include="Nice Admin\assets\ckeditor\samples\assets\sample.css" />
+    <Content Include="Nice Admin\assets\ckeditor\samples\assets\sample.jpg" />
+    <Content Include="Nice Admin\assets\ckeditor\samples\assets\uilanguages\languages.js" />
+    <Content Include="Nice Admin\assets\ckeditor\samples\divreplace.html" />
+    <Content Include="Nice Admin\assets\ckeditor\samples\index.html" />
+    <Content Include="Nice Admin\assets\ckeditor\samples\inlineall.html" />
+    <Content Include="Nice Admin\assets\ckeditor\samples\inlinebycode.html" />
+    <Content Include="Nice Admin\assets\ckeditor\samples\plugins\dialog\assets\my_dialog.js" />
+    <Content Include="Nice Admin\assets\ckeditor\samples\plugins\dialog\dialog.html" />
+    <Content Include="Nice Admin\assets\ckeditor\samples\plugins\enterkey\enterkey.html" />
+    <Content Include="Nice Admin\assets\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.swf" />
+    <Content Include="Nice Admin\assets\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\swfobject.js" />
+    <Content Include="Nice Admin\assets\ckeditor\samples\plugins\htmlwriter\outputforflash.html" />
+    <Content Include="Nice Admin\assets\ckeditor\samples\plugins\htmlwriter\outputhtml.html" />
+    <Content Include="Nice Admin\assets\ckeditor\samples\plugins\magicline\magicline.html" />
+    <Content Include="Nice Admin\assets\ckeditor\samples\plugins\toolbar\toolbar.html" />
+    <Content Include="Nice Admin\assets\ckeditor\samples\plugins\wysiwygarea\fullpage.html" />
+    <Content Include="Nice Admin\assets\ckeditor\samples\readonly.html" />
+    <Content Include="Nice Admin\assets\ckeditor\samples\replacebyclass.html" />
+    <Content Include="Nice Admin\assets\ckeditor\samples\replacebycode.html" />
+    <Content Include="Nice Admin\assets\ckeditor\samples\sample.css" />
+    <Content Include="Nice Admin\assets\ckeditor\samples\sample.js" />
+    <Content Include="Nice Admin\assets\ckeditor\samples\tabindex.html" />
+    <Content Include="Nice Admin\assets\ckeditor\samples\uicolor.html" />
+    <Content Include="Nice Admin\assets\ckeditor\samples\uilanguages.html" />
+    <Content Include="Nice Admin\assets\ckeditor\samples\xhtmlstyle.html" />
+    <Content Include="Nice Admin\assets\ckeditor\skins\moono\dialog.css" />
+    <Content Include="Nice Admin\assets\ckeditor\skins\moono\dialog_ie.css" />
+    <Content Include="Nice Admin\assets\ckeditor\skins\moono\dialog_ie7.css" />
+    <Content Include="Nice Admin\assets\ckeditor\skins\moono\dialog_ie8.css" />
+    <Content Include="Nice Admin\assets\ckeditor\skins\moono\dialog_iequirks.css" />
+    <Content Include="Nice Admin\assets\ckeditor\skins\moono\dialog_opera.css" />
+    <Content Include="Nice Admin\assets\ckeditor\skins\moono\editor.css" />
+    <Content Include="Nice Admin\assets\ckeditor\skins\moono\editor_gecko.css" />
+    <Content Include="Nice Admin\assets\ckeditor\skins\moono\editor_ie.css" />
+    <Content Include="Nice Admin\assets\ckeditor\skins\moono\editor_ie7.css" />
+    <Content Include="Nice Admin\assets\ckeditor\skins\moono\editor_ie8.css" />
+    <Content Include="Nice Admin\assets\ckeditor\skins\moono\editor_iequirks.css" />
+    <Content Include="Nice Admin\assets\ckeditor\skins\moono\icons.png" />
+    <Content Include="Nice Admin\assets\ckeditor\skins\moono\images\arrow.png" />
+    <Content Include="Nice Admin\assets\ckeditor\skins\moono\images\close.png" />
+    <Content Include="Nice Admin\assets\ckeditor\skins\moono\images\mini.png" />
+    <Content Include="Nice Admin\assets\ckeditor\styles.js" />
+    <Content Include="Nice Admin\assets\fullcalendar\changelog.txt" />
+    <Content Include="Nice Admin\assets\fullcalendar\demos\agenda-views.html" />
+    <Content Include="Nice Admin\assets\fullcalendar\demos\basic-views.html" />
+    <Content Include="Nice Admin\assets\fullcalendar\demos\cupertino\images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
+    <Content Include="Nice Admin\assets\fullcalendar\demos\cupertino\images\ui-bg_flat_15_cd0a0a_40x100.png" />
+    <Content Include="Nice Admin\assets\fullcalendar\demos\cupertino\images\ui-bg_glass_100_e4f1fb_1x400.png" />
+    <Content Include="Nice Admin\assets\fullcalendar\demos\cupertino\images\ui-bg_glass_50_3baae3_1x400.png" />
+    <Content Include="Nice Admin\assets\fullcalendar\demos\cupertino\images\ui-bg_glass_80_d7ebf9_1x400.png" />
+    <Content Include="Nice Admin\assets\fullcalendar\demos\cupertino\images\ui-bg_highlight-hard_100_f2f5f7_1x100.png" />
+    <Content Include="Nice Admin\assets\fullcalendar\demos\cupertino\images\ui-bg_highlight-hard_70_000000_1x100.png" />
+    <Content Include="Nice Admin\assets\fullcalendar\demos\cupertino\images\ui-bg_highlight-soft_100_deedf7_1x100.png" />
+    <Content Include="Nice Admin\assets\fullcalendar\demos\cupertino\images\ui-bg_highlight-soft_25_ffef8f_1x100.png" />
+    <Content Include="Nice Admin\assets\fullcalendar\demos\cupertino\images\ui-icons_2694e8_256x240.png" />
+    <Content Include="Nice Admin\assets\fullcalendar\demos\cupertino\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Nice Admin\assets\fullcalendar\demos\cupertino\images\ui-icons_3d80b3_256x240.png" />
+    <Content Include="Nice Admin\assets\fullcalendar\demos\cupertino\images\ui-icons_72a7cf_256x240.png" />
+    <Content Include="Nice Admin\assets\fullcalendar\demos\cupertino\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Nice Admin\assets\fullcalendar\demos\cupertino\theme.css" />
+    <Content Include="Nice Admin\assets\fullcalendar\demos\default.html" />
+    <Content Include="Nice Admin\assets\fullcalendar\demos\external-dragging.html" />
+    <Content Include="Nice Admin\assets\fullcalendar\demos\gcal.html" />
+    <Content Include="Nice Admin\assets\fullcalendar\demos\json-events.php" />
+    <Content Include="Nice Admin\assets\fullcalendar\demos\json.html" />
+    <Content Include="Nice Admin\assets\fullcalendar\demos\selectable.html" />
+    <Content Include="Nice Admin\assets\fullcalendar\demos\theme.html" />
+    <Content Include="Nice Admin\assets\fullcalendar\fullcalendar\bootstrap-fullcalendar.css" />
+    <Content Include="Nice Admin\assets\fullcalendar\fullcalendar\fullcalendar.css" />
+    <Content Include="Nice Admin\assets\fullcalendar\fullcalendar\fullcalendar.js" />
+    <Content Include="Nice Admin\assets\fullcalendar\fullcalendar\fullcalendar.min.js" />
+    <Content Include="Nice Admin\assets\fullcalendar\fullcalendar\fullcalendar.print.css" />
+    <Content Include="Nice Admin\assets\fullcalendar\fullcalendar\gcal.js" />
+    <Content Include="Nice Admin\assets\fullcalendar\GPL-LICENSE.txt" />
+    <Content Include="Nice Admin\assets\fullcalendar\jquery\jquery-1.8.1.min.js" />
+    <Content Include="Nice Admin\assets\fullcalendar\jquery\jquery-ui-1.8.23.custom.min.js" />
+    <Content Include="Nice Admin\assets\fullcalendar\MIT-LICENSE.txt" />
+    <Content Include="Nice Admin\assets\jquery-easy-pie-chart\examples\excanvas.js" />
+    <Content Include="Nice Admin\assets\jquery-easy-pie-chart\examples\index.html" />
+    <Content Include="Nice Admin\assets\jquery-easy-pie-chart\examples\style.css" />
+    <Content Include="Nice Admin\assets\jquery-easy-pie-chart\img\easy-pie-chart.png" />
+    <Content Include="Nice Admin\assets\jquery-easy-pie-chart\jquery.easy-pie-chart.css" />
+    <Content Include="Nice Admin\assets\jquery-easy-pie-chart\jquery.easy-pie-chart.js" />
+    <Content Include="Nice Admin\assets\jquery-knob\index.html" />
+    <Content Include="Nice Admin\assets\jquery-knob\js\jquery.knob.js" />
+    <Content Include="Nice Admin\assets\jquery-ui\images\animated-overlay.gif" />
+    <Content Include="Nice Admin\assets\jquery-ui\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Nice Admin\assets\jquery-ui\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Nice Admin\assets\jquery-ui\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Nice Admin\assets\jquery-ui\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Nice Admin\assets\jquery-ui\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Nice Admin\assets\jquery-ui\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Nice Admin\assets\jquery-ui\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Nice Admin\assets\jquery-ui\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Nice Admin\assets\jquery-ui\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Nice Admin\assets\jquery-ui\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Nice Admin\assets\jquery-ui\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Nice Admin\assets\jquery-ui\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Nice Admin\assets\jquery-ui\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Nice Admin\assets\jquery-ui\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Nice Admin\assets\jquery-ui\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Nice Admin\assets\jquery-ui\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Nice Admin\assets\jquery-ui\images\ui-icons_222222_256x240.png" />
+    <Content Include="Nice Admin\assets\jquery-ui\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Nice Admin\assets\jquery-ui\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Nice Admin\assets\jquery-ui\images\ui-icons_454545_256x240.png" />
+    <Content Include="Nice Admin\assets\jquery-ui\images\ui-icons_888888_256x240.png" />
+    <Content Include="Nice Admin\assets\jquery-ui\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Nice Admin\assets\jquery-ui\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Nice Admin\assets\jquery-ui\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Nice Admin\assets\jquery-ui\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Nice Admin\assets\jquery-ui\jquery-ui-1.10.1.custom.css" />
+    <Content Include="Nice Admin\assets\jquery-ui\jquery-ui-1.10.1.custom.min.css" />
+    <Content Include="Nice Admin\assets\jquery-ui\jquery-ui-1.10.1.custom.min.js" />
+    <Content Include="Nice Admin\assets\jquery-ui\jquery-ui-1.10.2.custom.min.js" />
+    <Content Include="Nice Admin\assets\jquery-ui\jquery-ui-1.9.2.custom.min.js" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\.gitignore" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\examples\area-as-line.html" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\examples\area.html" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\examples\bar-colors.html" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\examples\bar-no-axes.html" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\examples\bar.html" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\examples\days.html" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\examples\decimal-custom-hover.html" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\examples\diagonal-xlabels-bar.html" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\examples\diagonal-xlabels.html" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\examples\donut-colors.html" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\examples\donut-formatter.html" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\examples\donut.html" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\examples\dst.html" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\examples\events.html" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\examples\goals.html" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\examples\lib\example.css" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\examples\lib\example.js" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\examples\lib\prettify.css" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\examples\lib\prettify.js" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\examples\months-no-smooth.html" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\examples\negative.html" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\examples\no-grid.html" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\examples\non-continuous.html" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\examples\non-date.html" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\examples\quarters.html" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\examples\stacked_bars.html" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\examples\timestamps.html" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\examples\updating.html" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\examples\weeks.html" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\examples\years.html" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\examples\_template.html" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\grunt.js" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\morris.css" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\morris.js" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\morris.min.js" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\raphael-min.js" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\spec\specs.html" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\spec\vendor\chai-1.3.0.js" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\spec\vendor\chai-jquery-1.1.0.js" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\spec\vendor\jquery-1.8.2.min.js" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\spec\vendor\mocha-1.6.0.css" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\spec\vendor\mocha-1.6.0.js" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\spec\vendor\raphael-2.1.0.min.js" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\spec\vendor\sinon-1.5.0.js" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\spec\vendor\sinon-chai-2.1.2.js" />
+    <Content Include="Nice Admin\basic_table.html" />
+    <Content Include="Nice Admin\blank.html" />
+    <Content Include="Nice Admin\buttons.html" />
+    <Content Include="Nice Admin\chart-chartjs.html" />
+    <Content Include="Nice Admin\contact.html" />
+    <Content Include="Nice Admin\contactform\contactform.js" />
+    <Content Include="Nice Admin\contactform\Readme.txt" />
+    <Content Include="Nice Admin\css\bootstrap-colorpicker.css" />
+    <Content Include="Nice Admin\css\bootstrap-datepicker.css" />
+    <Content Include="Nice Admin\css\bootstrap-theme.css" />
+    <Content Include="Nice Admin\css\bootstrap.min.css" />
+    <Content Include="Nice Admin\css\daterangepicker.css" />
+    <Content Include="Nice Admin\css\elegant-icons-style.css" />
+    <Content Include="Nice Admin\css\font-awesome.css" />
+    <Content Include="Nice Admin\css\font-awesome.min.css" />
+    <Content Include="Nice Admin\css\fullcalendar.css" />
+    <Content Include="Nice Admin\css\jquery-jvectormap-1.2.2.css" />
+    <Content Include="Nice Admin\css\jquery-ui-1.10.4.min.css" />
+    <Content Include="Nice Admin\css\line-icons.css" />
+    <Content Include="Nice Admin\css\owl.carousel.css" />
+    <Content Include="Nice Admin\css\style-responsive.css" />
+    <Content Include="Nice Admin\css\style.css" />
+    <Content Include="Nice Admin\css\widgets.css" />
+    <Content Include="Nice Admin\css\xcharts.min.css" />
+    <Content Include="Nice Admin\fonts\ElegantIcons.svg" />
+    <Content Include="Nice Admin\fonts\fontawesome-webfont.svg" />
+    <Content Include="Nice Admin\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Nice Admin\form_component.html" />
+    <Content Include="Nice Admin\form_validation.html" />
+    <Content Include="Nice Admin\general.html" />
+    <Content Include="Nice Admin\grids.html" />
+    <Content Include="Nice Admin\img\arrow-up.png" />
+    <Content Include="Nice Admin\img\avatar-mini.jpg" />
+    <Content Include="Nice Admin\img\avatar-mini2.jpg" />
+    <Content Include="Nice Admin\img\avatar-mini3.jpg" />
+    <Content Include="Nice Admin\img\avatar-mini4.jpg" />
+    <Content Include="Nice Admin\img\avatar1.jpg" />
+    <Content Include="Nice Admin\img\avatar1_small.jpg" />
+    <Content Include="Nice Admin\img\bg-1.jpg" />
+    <Content Include="Nice Admin\img\chart-texture.jpg" />
+    <Content Include="Nice Admin\img\chat-avatar.jpg" />
+    <Content Include="Nice Admin\img\chat-avatar2.jpg" />
+    <Content Include="Nice Admin\img\customSelect-arrow.gif" />
+    <Content Include="Nice Admin\img\geekslabs.png" />
+    <Content Include="Nice Admin\img\Germany.png" />
+    <Content Include="Nice Admin\img\icons\line-icon-c.png" />
+    <Content Include="Nice Admin\img\icons\line-icon-hover.png" />
+    <Content Include="Nice Admin\img\icons\line-icon.png" />
+    <Content Include="Nice Admin\img\icons\search-line-icon.png" />
+    <Content Include="Nice Admin\img\icons\social.png" />
+    <Content Include="Nice Admin\img\icons\weather-hover.png" />
+    <Content Include="Nice Admin\img\icons\weather.png" />
+    <Content Include="Nice Admin\img\India.png" />
+    <Content Include="Nice Admin\img\left-arrow.png" />
+    <Content Include="Nice Admin\img\logo-big.png" />
+    <Content Include="Nice Admin\img\mail-avatar.jpg" />
+    <Content Include="Nice Admin\img\profile-avatar.jpg" />
+    <Content Include="Nice Admin\img\profile-widget-avatar.jpg" />
+    <Content Include="Nice Admin\img\right-arrow.png" />
+    <Content Include="Nice Admin\img\Russia.png" />
+    <Content Include="Nice Admin\img\sample-img-1.jpg" />
+    <Content Include="Nice Admin\img\sample-img-2.png" />
+    <Content Include="Nice Admin\img\sample-img-3.png" />
+    <Content Include="Nice Admin\img\search-icon.jpg" />
+    <Content Include="Nice Admin\img\Spain.png" />
+    <Content Include="Nice Admin\img\user.jpg" />
+    <Content Include="Nice Admin\img\user22.png" />
+    <Content Include="Nice Admin\index.html" />
+    <Content Include="Nice Admin\js\additional-methods.min.js" />
+    <Content Include="Nice Admin\js\bootstrap-colorpicker.js" />
+    <Content Include="Nice Admin\js\bootstrap-datepicker.js" />
+    <Content Include="Nice Admin\js\bootstrap-switch.js" />
+    <Content Include="Nice Admin\js\bootstrap-wysiwyg-custom.js" />
+    <Content Include="Nice Admin\js\bootstrap-wysiwyg.js" />
+    <Content Include="Nice Admin\js\bootstrap.js" />
+    <Content Include="Nice Admin\js\bootstrap.min.js" />
+    <Content Include="Nice Admin\js\calendar-custom.js" />
+    <Content Include="Nice Admin\js\chartjs-custom.js" />
+    <Content Include="Nice Admin\js\charts-flot.js" />
+    <Content Include="Nice Admin\js\charts-other.js" />
+    <Content Include="Nice Admin\js\charts-xcharts.js" />
+    <Content Include="Nice Admin\js\charts.js" />
+    <Content Include="Nice Admin\js\daterangepicker.js" />
+    <Content Include="Nice Admin\js\dynamic-table.js" />
+    <Content Include="Nice Admin\js\easy-pie-chart.js" />
+    <Content Include="Nice Admin\js\excanvas.min.js" />
+    <Content Include="Nice Admin\js\form-component.js" />
+    <Content Include="Nice Admin\js\form-validation-script.js" />
+    <Content Include="Nice Admin\js\fullcalendar.js" />
+    <Content Include="Nice Admin\js\fullcalendar.min.js" />
+    <Content Include="Nice Admin\js\ga.js" />
+    <Content Include="Nice Admin\js\gdp-data.js" />
+    <Content Include="Nice Admin\js\gritter.js" />
+    <Content Include="Nice Admin\js\html5shiv.js" />
+    <Content Include="Nice Admin\js\index.js" />
+    <Content Include="Nice Admin\js\jquery-1.8.3.min.js" />
+    <Content Include="Nice Admin\js\jquery-jvectormap-1.2.2.min.js" />
+    <Content Include="Nice Admin\js\jquery-jvectormap-world-mill-en.js" />
+    <Content Include="Nice Admin\js\jquery-ui-1.10.4.min.js" />
+    <Content Include="Nice Admin\js\jquery-ui-1.9.2.custom.min.js" />
+    <Content Include="Nice Admin\js\jquery.autosize.min.js" />
+    <Content Include="Nice Admin\js\jquery.customSelect.min.js" />
+    <Content Include="Nice Admin\js\jquery.flot.pie.js" />
+    <Content Include="Nice Admin\js\jquery.hotkeys.js" />
+    <Content Include="Nice Admin\js\jquery.js" />
+    <Content Include="Nice Admin\js\jquery.localscroll.js" />
+    <Content Include="Nice Admin\js\jquery.nicescroll.js" />
+    <Content Include="Nice Admin\js\jquery.placeholder.min.js" />
+    <Content Include="Nice Admin\js\jquery.rateit.min.js" />
+    <Content Include="Nice Admin\js\jquery.scrollTo.min.js" />
+    <Content Include="Nice Admin\js\jquery.slimscroll.min.js" />
+    <Content Include="Nice Admin\js\jquery.smartWizard.js" />
+    <Content Include="Nice Admin\js\jquery.sparkline-11.js" />
+    <Content Include="Nice Admin\js\jquery.sparkline.js" />
+    <Content Include="Nice Admin\js\jquery.stepy.js" />
+    <Content Include="Nice Admin\js\jquery.tagsinput.js" />
+    <Content Include="Nice Admin\js\jquery.validate.min.js" />
+    <Content Include="Nice Admin\js\lte-ie7.js" />
+    <Content Include="Nice Admin\js\moment.js" />
+    <Content Include="Nice Admin\js\morris-script.js" />
+    <Content Include="Nice Admin\js\morris.min.js" />
+    <Content Include="Nice Admin\js\owl.carousel.js" />
+    <Content Include="Nice Admin\js\scripts.js" />
+    <Content Include="Nice Admin\js\sliders.js" />
+    <Content Include="Nice Admin\js\sparkline-chart.js" />
+    <Content Include="Nice Admin\js\sparklines.js" />
+    <Content Include="Nice Admin\js\xcharts.min.js" />
+    <Content Include="Nice Admin\login.html" />
+    <Content Include="Nice Admin\profile.html" />
+    <Content Include="Nice Admin\readme.txt" />
+    <Content Include="Nice Admin\widgets.html" />
+    <Content Include="Scripts\bootbox.js" />
+    <Content Include="Scripts\bootbox.min.js" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\index.js.flow" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Nice Admin\assets\chart-master\component.json" />
+    <Content Include="Nice Admin\assets\chart-master\docs\prettify.less" />
+    <Content Include="Nice Admin\assets\chart-master\docs\styles.less" />
+    <Content Include="Nice Admin\assets\chart-master\LICENSE.md" />
+    <Content Include="Nice Admin\assets\chart-master\readme.md" />
+    <Content Include="Nice Admin\assets\ckeditor\CHANGES.md" />
+    <Content Include="Nice Admin\assets\ckeditor\LICENSE.md" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\scayt\LICENSE.md" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\scayt\README.md" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\wsc\LICENSE.md" />
+    <Content Include="Nice Admin\assets\ckeditor\plugins\wsc\README.md" />
+    <Content Include="Nice Admin\assets\ckeditor\README.md" />
+    <Content Include="Nice Admin\assets\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.fla" />
+    <Content Include="Nice Admin\assets\ckeditor\skins\moono\readme.md" />
+    <Content Include="Nice Admin\assets\jquery-easy-pie-chart\jquery.easy-pie-chart.coffee" />
+    <Content Include="Nice Admin\assets\jquery-easy-pie-chart\Makefile" />
+    <Content Include="Nice Admin\assets\jquery-easy-pie-chart\Readme.md" />
+    <Content Include="Nice Admin\assets\jquery-knob\README.md" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\.travis.yml" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\component.json" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\less\morris.core.less" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\lib\morris.area.coffee" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\lib\morris.bar.coffee" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\lib\morris.coffee" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\lib\morris.donut.coffee" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\lib\morris.grid.coffee" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\lib\morris.hover.coffee" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\lib\morris.line.coffee" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\package.json" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\README.md" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\spec\lib\area\area_spec.coffee" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\spec\lib\bar\bar_spec.coffee" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\spec\lib\bar\colours.coffee" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\spec\lib\commas_spec.coffee" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\spec\lib\donut\donut_spec.coffee" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\spec\lib\grid\auto_grid_lines_spec.coffee" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\spec\lib\grid\set_data_spec.coffee" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\spec\lib\grid\y_label_format_spec.coffee" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\spec\lib\hover_spec.coffee" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\spec\lib\label_series_spec.coffee" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\spec\lib\line\line_spec.coffee" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\spec\lib\pad_spec.coffee" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\spec\lib\parse_time_spec.coffee" />
+    <Content Include="Nice Admin\assets\morris.js-0.4.3\spec\support\placeholder.coffee" />
+    <Content Include="Nice Admin\fonts\ElegantIcons.eot" />
+    <Content Include="Nice Admin\fonts\ElegantIcons.ttf" />
+    <Content Include="Nice Admin\fonts\ElegantIcons.woff" />
+    <Content Include="Nice Admin\fonts\fontawesome-webfont.eot" />
+    <Content Include="Nice Admin\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Nice Admin\fonts\fontawesome-webfont.woff" />
+    <Content Include="Nice Admin\fonts\FontAwesome.otf" />
+    <Content Include="Nice Admin\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Nice Admin\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Nice Admin\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="web2\css\bootstrap.css" />
+    <Content Include="web2\css\clndr.css" />
+    <Content Include="web2\css\jqvmap.css" />
+    <Content Include="web2\css\nav.css" />
+    <Content Include="web2\css\style.css" />
+    <Content Include="web2\images\ar2.png" />
+    <Content Include="web2\images\arrows.png" />
+    <Content Include="web2\images\avatar.jpg" />
+    <Content Include="web2\images\avatar1.jpg" />
+    <Content Include="web2\images\avatar2.jpg" />
+    <Content Include="web2\images\img-sprite.png" />
+    <Content Include="web2\images\into.png" />
+    <Content Include="web2\images\into1.png" />
+    <Content Include="web2\images\logo.png" />
+    <Content Include="web2\images\pp.jpg" />
+    <Content Include="web2\images\pp0.jpg" />
+    <Content Include="web2\images\pp01.jpg" />
+    <Content Include="web2\images\settings.png" />
+    <Content Include="web2\images\tick-mark.png" />
+    <Content Include="web2\index.html" />
+    <Content Include="web2\js\Chart1.js" />
+    <Content Include="web2\js\clndr.js" />
+    <Content Include="web2\js\easyResponsiveTabs.js" />
+    <Content Include="web2\js\jquery.easydropdown.js" />
+    <Content Include="web2\js\jquery.min.js" />
+    <Content Include="web2\js\jquery.nicescroll.js" />
+    <Content Include="web2\js\jquery.vmap.js" />
+    <Content Include="web2\js\jquery.vmap.sampledata.js" />
+    <Content Include="web2\js\jquery.vmap.world.js" />
+    <Content Include="web2\js\main.js" />
+    <Content Include="web2\js\moment-2.2.1.js" />
+    <Content Include="web2\js\site.js" />
+    <Content Include="web2\js\underscore-min.js" />
+    <Content Include="web2\resimler\book1.jpg" />
+    <Content Include="web2\resimler\book2.jpg" />
+    <Content Include="web2\resimler\book3.jpg" />
+    <Content Include="web2\resimler\book4.jpg" />
+    <Content Include="web2\resimler\book5.jpg" />
+    <Content Include="web2\resimler\img1.jpg" />
+    <Content Include="web2\w3layouts-License.txt" />
+    <Content Include=".editorconfig" />
+    <None Include="Dockerfile" />
+    <None Include=".dockerignore">
+      <DependentUpon>Dockerfile</DependentUpon>
+    </None>
+    <None Include="Properties\PublishProfiles\eshop2 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\eshop2 - FTP1.pubxml" />
+    <None Include="Properties\PublishProfiles\eshop2 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\eshop2 - Web Deploy1.pubxml" />
+    <None Include="Properties\PublishProfiles\eshop2 - Web Deploy2.pubxml" />
+    <None Include="Properties\PublishProfiles\EShop20231212000555.pubxml" />
+    <None Include="Properties\PublishProfiles\EShop202312120005551.pubxml" />
+    <None Include="Properties\PublishProfiles\EShop202312120005552.pubxml" />
+    <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
+    <Content Include="Scripts\jquery-3.0.0.js" />
+    <Content Include="Scripts\jquery-3.0.0.min.js" />
+    <Content Include="Scripts\jquery-3.0.0.slim.js" />
+    <Content Include="Scripts\jquery-3.0.0.slim.min.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\src\index.js" />
+    <Content Include="Scripts\src\methods\defaults.js" />
+    <Content Include="Scripts\src\methods\destroy.js" />
+    <Content Include="Scripts\src\methods\disableEventListeners.js" />
+    <Content Include="Scripts\src\methods\enableEventListeners.js" />
+    <Content Include="Scripts\src\methods\placements.js" />
+    <Content Include="Scripts\src\methods\update.js" />
+    <Content Include="Scripts\src\modifiers\applyStyle.js" />
+    <Content Include="Scripts\src\modifiers\arrow.js" />
+    <Content Include="Scripts\src\modifiers\computeStyle.js" />
+    <Content Include="Scripts\src\modifiers\flip.js" />
+    <Content Include="Scripts\src\modifiers\hide.js" />
+    <Content Include="Scripts\src\modifiers\index.js" />
+    <Content Include="Scripts\src\modifiers\inner.js" />
+    <Content Include="Scripts\src\modifiers\keepTogether.js" />
+    <Content Include="Scripts\src\modifiers\offset.js" />
+    <Content Include="Scripts\src\modifiers\preventOverflow.js" />
+    <Content Include="Scripts\src\modifiers\shift.js" />
+    <Content Include="Scripts\src\utils\clockwise.js" />
+    <Content Include="Scripts\src\utils\computeAutoPlacement.js" />
+    <Content Include="Scripts\src\utils\debounce.js" />
+    <Content Include="Scripts\src\utils\find.js" />
+    <Content Include="Scripts\src\utils\findCommonOffsetParent.js" />
+    <Content Include="Scripts\src\utils\findIndex.js" />
+    <Content Include="Scripts\src\utils\getBordersSize.js" />
+    <Content Include="Scripts\src\utils\getBoundaries.js" />
+    <Content Include="Scripts\src\utils\getBoundingClientRect.js" />
+    <Content Include="Scripts\src\utils\getClientRect.js" />
+    <Content Include="Scripts\src\utils\getFixedPositionOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetRect.js" />
+    <Content Include="Scripts\src\utils\getOffsetRectRelativeToArbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getOppositePlacement.js" />
+    <Content Include="Scripts\src\utils\getOppositeVariation.js" />
+    <Content Include="Scripts\src\utils\getOuterSizes.js" />
+    <Content Include="Scripts\src\utils\getParentNode.js" />
+    <Content Include="Scripts\src\utils\getPopperOffsets.js" />
+    <Content Include="Scripts\src\utils\getReferenceNode.js" />
+    <Content Include="Scripts\src\utils\getReferenceOffsets.js" />
+    <Content Include="Scripts\src\utils\getRoot.js" />
+    <Content Include="Scripts\src\utils\getRoundedOffsets.js" />
+    <Content Include="Scripts\src\utils\getScroll.js" />
+    <Content Include="Scripts\src\utils\getScrollParent.js" />
+    <Content Include="Scripts\src\utils\getStyleComputedProperty.js" />
+    <Content Include="Scripts\src\utils\getSupportedPropertyName.js" />
+    <Content Include="Scripts\src\utils\getViewportOffsetRectRelativeToArtbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getWindow.js" />
+    <Content Include="Scripts\src\utils\getWindowSizes.js" />
+    <Content Include="Scripts\src\utils\includeScroll.js" />
+    <Content Include="Scripts\src\utils\index.js" />
+    <Content Include="Scripts\src\utils\isBrowser.js" />
+    <Content Include="Scripts\src\utils\isFixed.js" />
+    <Content Include="Scripts\src\utils\isFunction.js" />
+    <Content Include="Scripts\src\utils\isIE.js" />
+    <Content Include="Scripts\src\utils\isModifierEnabled.js" />
+    <Content Include="Scripts\src\utils\isModifierRequired.js" />
+    <Content Include="Scripts\src\utils\isNumeric.js" />
+    <Content Include="Scripts\src\utils\isOffsetContainer.js" />
+    <Content Include="Scripts\src\utils\removeEventListeners.js" />
+    <Content Include="Scripts\src\utils\runModifiers.js" />
+    <Content Include="Scripts\src\utils\setAttributes.js" />
+    <Content Include="Scripts\src\utils\setStyles.js" />
+    <Content Include="Scripts\src\utils\setupEventListeners.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AdminCategoryController.cs" />
+    <Compile Include="Controllers\AdminProductController.cs" />
+    <Compile Include="Controllers\AdminSalesController.cs" />
+    <Compile Include="Controllers\AdminİstatisticController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\SalesController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Roller\AdminRolProvider.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <None Include="packages.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Scripts\jquery-3.0.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.0.0.min.map" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper.js.flow" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\AdminCategory\Create.cshtml" />
+    <Content Include="Views\AdminCategory\Update.cshtml" />
+    <Content Include="Views\AdminCategory\Index.cshtml" />
+    <Content Include="Views\AdminProduct\Index.cshtml" />
+    <Content Include="Views\AdminProduct\Create.cshtml" />
+    <Content Include="Views\AdminProduct\Update.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\Category\CategoryList.cshtml" />
+    <Content Include="Views\Product\PopularProduct.cshtml" />
+    <Content Include="Views\Category\Details.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\TotalCount.cshtml" />
+    <Content Include="Views\Sales\Buy.cshtml" />
+    <Content Include="Views\Sales\islem.cshtml" />
+    <Content Include="Views\Sales\Index.cshtml" />
+    <Content Include="Views\Sales\BuyAll.cshtml" />
+    <Content Include="Views\AdminSales\Index.cshtml" />
+    <Content Include="Views\AdminProduct\CriticalStock.cshtml" />
+    <Content Include="Views\AdminProduct\StokCount.cshtml" />
+    <Content Include="Views\AdminProduct\StokYellow.cshtml" />
+    <Content Include="Views\Shared\CategoryGetList.cshtml" />
+    <Content Include="Views\Admin\CommentList.cshtml" />
+    <Content Include="Views\Product\CommentGet.cshtml" />
+    <Content Include="Views\Account\SifreReset.cshtml" />
+    <Content Include="Views\User\Update.cshtml" />
+    <Content Include="Views\Admin\UserList.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">
+      <Project>{b073ff64-834d-494f-a8e2-b27fa214445f}</Project>
+      <Name>BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
+      <Project>{3fe3da60-dc41-4b1d-a629-53b30da2ebe7}</Project>
+      <Name>DataAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EntityLayer\EntityLayer.csproj">
+      <Project>{fd78bead-189c-46b5-a7ce-c76f5313abb0}</Project>
+      <Name>EntityLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50186</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44396/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.11.1\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.11.1\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.11.1\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.11.1\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.11.1\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets" Condition="Exists('..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.11.1\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,15 @@
+C:\Users\Pc\OneDrive\Desktop\EShop\DataAccessLayer\bin\Release\DataAccessLayer.dll.config
+C:\Users\Pc\OneDrive\Desktop\EShop\DataAccessLayer\bin\Release\DataAccessLayer.dll
+C:\Users\Pc\OneDrive\Desktop\EShop\DataAccessLayer\bin\Release\DataAccessLayer.pdb
+C:\Users\Pc\OneDrive\Desktop\EShop\DataAccessLayer\bin\Release\EntityFramework.dll
+C:\Users\Pc\OneDrive\Desktop\EShop\DataAccessLayer\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Pc\OneDrive\Desktop\EShop\DataAccessLayer\bin\Release\EntityLayer.dll
+C:\Users\Pc\OneDrive\Desktop\EShop\DataAccessLayer\bin\Release\EntityLayer.pdb
+C:\Users\Pc\OneDrive\Desktop\EShop\DataAccessLayer\bin\Release\EntityLayer.dll.config
+C:\Users\Pc\OneDrive\Desktop\EShop\DataAccessLayer\bin\Release\EntityFramework.xml
+C:\Users\Pc\OneDrive\Desktop\EShop\DataAccessLayer\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Pc\OneDrive\Desktop\EShop\DataAccessLayer\obj\Release\DataAccessLayer.csproj.AssemblyReference.cache
+C:\Users\Pc\OneDrive\Desktop\EShop\DataAccessLayer\obj\Release\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Pc\OneDrive\Desktop\EShop\DataAccessLayer\obj\Release\DataAccessLayer.csproj.CopyComplete
+C:\Users\Pc\OneDrive\Desktop\EShop\DataAccessLayer\obj\Release\DataAccessLayer.dll
+C:\Users\Pc\OneDrive\Desktop\EShop\DataAccessLayer\obj\Release\DataAccessLayer.pdb

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Bu dosya, Web projenizin yayımlama/paket işlemi tarafından kullanılıyor. MSBuild dosyasını düzenleyerek
+bu işlemin davranışını düzenleyebilirsiniz. Bununla ilgili daha fazla bilgi edinmek için https://go.microsoft.com/fwlink/?LinkID=208121 adresini ziyaret edin. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAaMrnlKNgCUiDKwebM14WZQAAAAACAAAAAAAQZgAAAAEAACAAAADEujjxYAoBqoY9yP6lY6Qxp/gZy/KhYZLt/ohqcle/qAAAAAAOgAAAAAIAACAAAABPlDKkfSw5pFZ/4xPEr78xhbv07e4cmHcNuxwFgvkO7IAAAAAF/IANzV9MXIsZAqyfKIWpGc2suVbYGRwMbqMPSQRaCfjUdlbfXMNUF7OvZeGjZWu6HFKhLtoi1A1zQbvVwr2JHwzA2PY1X72ZD6km+/fvYqazoJSwumRTSWTA6hs2budt2VQAaFMQQwBbnBG4673ma5aWFTWTznM9rWbTstW/LEAAAAB6WK5dGHmvghZji2WxVH3M7oWC4LXB+m2uHX8IJB1+CrlhYsIAkJ5y7gc7UDF0Rcjfho1bciwjC+8GhBF9Vq2f</EncryptedPassword>
+  </PropertyGroup>
+</Project>

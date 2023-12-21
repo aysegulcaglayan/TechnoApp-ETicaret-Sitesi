@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="Context1-Web.config Connection String" description="Context1 Veritabanına erişmek için uygulama tarafından web.config'de kullanılan Bağlantı Dizesi." defaultValue="data source=AYSEGUL\SQLEXPRESS01; initial catalog=EShop; integrated security=true;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Pc\\OneDrive\\Desktop\\EShop\\EShop\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Context1']/@connectionString" />
+  </parameter>
+</parameters>
